@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brincadeira do Cinema</title>
+    <style>
+            #naoButton {
+                position: absolute;
+                left: 50px; /* Posição inicial esquerda */
+                top: 50px; /* Posição inicial superior */
+                background-color: #ff6666; /* Cor de fundo vermelha */
+                color: white; /* Cor do texto branca */
+                font-size: 18px; /* Tamanho da fonte */
+                padding: 10px 20px; /* Preenchimento interno */
+                border: none; /* Remova a borda */
+                border-radius: 5px; /* Cantos arredondados */
+                cursor: pointer; /* Ícone de cursor de mão */
+            }
+            
+            #cinemaButton {
+                background-color: #337ab7; /* Cor de fundo azul */
+                color: white; /* Cor do texto branca */
+                font-size: 18px; /* Tamanho da fonte */
+                padding: 10px 20px; /* Preenchimento interno */
+                border: none; /* Remova a borda */
+                border-radius: 5px; /* Cantos arredondados */
+                cursor: pointer; /* Ícone de cursor de mão */
+            }
+        
+        </style>
+</head>
+<body>
+    <h1>Vamos ir no cinema mesmo??</h1>
+    <button id="cinemaButton" onclick="brincadeira()">Simm</button>
+    <button id="naoButton" onclick="moveButton()">Não</button>
+
+    <script>
+            // Defina a posição inicial do botão "Não".
+            var naoButton = document.getElementById("naoButton");
+            var container = document.body; // Container para a movimentação do botão
+
+            function moveButton() {
+                // Gere coordenadas X e Y aleatórias para a nova posição do botão
+                var maxX = document.body.clientWidth - naoButton.clientWidth;
+                var maxY = document.body.clientHeight - naoButton.clientHeight;
+                var newX = Math.random() * maxX;
+                var newY = Math.random() * maxY;
+            
+                // Atualize a posição do botão "Não"
+                naoButton.style.left = newX + "px";
+                naoButton.style.top = newY + "px";
+            }
+
+            function brincadeira() {
+                var cinemaButton = document.getElementById("cinemaButton");
+
+                if (cinemaButton.innerHTML === "Cinema?") {
+                    cinemaButton.innerHTML = "Sim, vamos!";
+                    cinemaButton.style.backgroundColor = "green";
+                } else {
+                    cinemaButton.innerHTML = "Cinema?";
+                    cinemaButton.style.backgroundColor = "blue";
+                    moveButton(); // Mova o botão "Não" quando a resposta for "Não"
+                }
+            }
+    </script>
+</body>
+</html>
